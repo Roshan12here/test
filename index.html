@@ -110,77 +110,106 @@
     <!--Preloader area End here-->
 
     <!--Header Start-->
-    <header class="header-section" style="margin-bottom: 6vh;">
-      <div class="menu-area sticky-menu">
-        <div class="container">
-          <div class="header-inner d-flex justify-between align-center">
-            <div class="logo-area d-flex justify-between align-center">
-              <div class="site-logo">
-                <a href="index.html">
-                  <img src="assets/images/logo/logo.svg" alt="logo" />
-                </a>
-              </div>
-              <nav class="main-menu">
-                <ul class="nav-list">
-                  <li><a href="https://tokens.sportzchain.com/" target="_blank">Home</a></li>
-                  <li><a href="https://sportzchain.com/spn-token-page/">$SPN Token</a></li>
-                  <li><a href="https://sportzchain.com/sportzchain_whitepaper/" target="_blank">Whitepaper</a></li>
-                </ul>
-              </nav>
-            </div>
-            <button class="menu-toggle" aria-label="Open menu">
-              <span class="icon-menu"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="side-drawer">
-        <button class="drawer-close" aria-label="Close menu">&times;</button>
-        <ul class="drawer-nav-list">
-          <li><a href="https://tokens.sportzchain.com/" target="_blank">Home</a></li>
-          <li><a href="https://sportzchain.com/spn-token-page/">$SPN Token</a></li>
-          <li><a href="https://sportzchain.com/sportzchain_whitepaper/" target="_blank">Whitepaper</a></li>
+    <style>
+
+        .navbar {
+            background-color: #000000;
+            padding: 1rem;
+            display: flex;
+            margin-bottom: 12vh;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            cursor: pointer;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 1rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: #920B3A;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        .hamburger:hover span {
+            background-color: #ddd;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: #333;
+                padding: 1rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+    <nav class="navbar">
+        <div class="logo">
+                <img src="assets/images/logo/logo.svg" alt="logo" />
+                      </div>
+        <ul class="nav-links">
+            <li><a href="https://tokens.sportzchain.com/" target="_blank">Home</a></li>
+            <li><a href="https://sportzchain.com/spn-token-page/">$SPN Token</a></li>
+            <li><a href="https://sportzchain.com/sportzchain_whitepaper/" target="_blank">Whitepaper</a></li>
         </ul>
-      </div>
-    </header>
-    
+        <div class="hamburger "  style="background-color: #000000;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const sideDrawer = document.querySelector('.side-drawer');
-  const drawerClose = document.querySelector('.drawer-close');
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
-  menuToggle.addEventListener('click', () => {
-    sideDrawer.classList.add('drawer-open');
-  });
-
-  drawerClose.addEventListener('click', () => {
-    sideDrawer.classList.remove('drawer-open');
-  });
-
-  // Close drawer when clicking outside of it
-  document.addEventListener('click', (event) => {
-    if (!sideDrawer.contains(event.target) && !menuToggle.contains(event.target)) {
-      sideDrawer.classList.remove('drawer-open');
-    }
-  });
-});
-
-</script>
-
-    
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
     <!--Header End-->
 
     <!-- Breadcrumbs Section Start -->
 
-    
     <style>
-      body, html {
-          margin: 0;
-          padding: 0;
-          font-family: Arial, sans-serif;
-      }
       .as-section {
           background: linear-gradient(135deg, #610726, #310413, #331029);
           color: white;
@@ -192,7 +221,9 @@
       }
       .header-content {
           display: flex;
-          justify-content: space-between;
+          flex-direction: row; /* Change to row for larger devices */
+          justify-content: space-between; /* Distribute space between title and connect button */
+          padding: 2vh;
           align-items: center;
           flex-wrap: wrap;
       }
@@ -309,8 +340,8 @@
               margin-top: 1rem;
           }
       }
-  </style>
-
+    </style>
+    
     <div class="as-section">
       <div class="container">
           <div class="header-content">
@@ -338,23 +369,22 @@
 
     <!-- Participat Detaisl Content Start -->
 
-
-    
     <div
-      class="participat-information project-details-conent gamfi-about-secion pb-80 md-pb-50"
-    >
+      class="participat-information   project-details-conent gamfi-about-secion pb-80 md-pb-50"
+    id="pros"
+      >
       <div class="container">
         <div class="row pt-70">
           <div class="col-lg-6 pr-25 md-pr-15">
-            <div class="project-item asaaa">
+            <div class="project-item asaaa"  id = "asa">
               <div class="project-info border-bottom-2">
-                <h4 class="mb-15">
+                <h4 class="mb-15 "  id = "itemh1" >
                   Participate in $SPN Staking Program - The Vault
                 </h4>
               </div>
               <ul class="date-listing mb-35">
                 <li
-                  class="stake-tab-links"
+                  class="stake-tab-links active"
                   onclick="openTab(event, 'sevenDays')"
                   id="defaultOpen"
                   name="sevenDays"
@@ -383,6 +413,13 @@
                   <button>90 Days</button>
                 </li>
               </ul>
+              
+        
+              >
+
+
+</style>
+
               <div class="project-content">
                 <div id="sevenDays" class="stake-tab-content">
                   <div class="project-media mb-40">
@@ -390,7 +427,7 @@
                       <li style="padding-bottom: 24px">
                         Lock period: <strong>7 days</strong>
                         <span>APY Rate</span>
-                        <a href="#"><span class="big-text apy">20 %</span></a>
+                        <a href="#"><span class="big-text apy" style="color: #FFDCF5;">20 %</span></a>
                       </li>
                       <!-- <li>Re-locks on registration: <strong>Yes</strong> <a href="#"><span
                                                     class="big-text apy">0 %</span></a></li> -->
@@ -422,11 +459,11 @@
                       <li style="padding-bottom: 24px">
                         Lock period: <strong>10 days</strong>
                         <span>APY Rate</span>
-                        <a href="#"><span class="big-text apy">40 %</span></a>
+                        <a href="#"><span class="big-text apy" style="color: #FFDCF5;">40 %</span></a>
                       </li>
                       <!-- <li>Re-locks on registration: <strong>Yes</strong> <a href="#"><span
                                                     class="big-text apy">0 %</span></a></li> -->
-                      <li>
+                      <li >
                         Early unstake fee:
                         <strong class="early-unstake-fee"></strong>
                       </li>
@@ -458,7 +495,7 @@
                       <li style="padding-bottom: 24px">
                         Lock period: <strong>32 days</strong>
                         <span>APY Rate</span>
-                        <a href="#"><span class="big-text apy">60 %</span></a>
+                        <a href="#"><span class="big-text apy"  style="color: #FFDCF5;">60 %</span></a>
                       </li>
                       <!-- <li>Re-locks on registration: <strong>Yes</strong> <a href="#"><span
                                                     class="big-text">25 %</span></a></li> -->
@@ -494,7 +531,7 @@
                       <li style="padding-bottom: 24px">
                         Lock period: <strong>90 days</strong>
                         <span>APY Rate</span>
-                        <a href="#"><span class="big-text apy">100 %</span></a>
+                        <a href="#"><span class="big-text apy"  style="color: #FFDCF5;">100 %</span></a>
                       </li>
                       <!-- <li>Re-locks on registration: <strong>Yes</strong> <a href="#"><span
                                                     class="big-text">35 %</span></a></li> -->
@@ -616,9 +653,10 @@
           </div>
           <div class="col-lg-6 pl-25 md-pl-15">
             <div
-              class="project-item project-value-inner d-flex justify-content-between align-items-center mb-30"
+           style="background-color: #610726;"
+            class="project-item project-value-inner  d-flex justify-content-between align-items-center mb-30"
             >
-              <div class="project-value">
+              <div class="project-value" >
                 <h3 class="mb-15 initial-loader" id="total-locked-tokens">0</h3>
                 <span>Total Staked Tokens</span>
 
@@ -642,7 +680,8 @@
                         </div>
                     </div> -->
             <div
-              class="project-item project-value-inner d-flex justify-content-between align-items-center"
+            style="background-color: #610726;"
+            class="project-item project-value-inner d-flex justify-content-between align-items-center"
             >
               <div class="project-value">
                 <h3 class="mb-15 initial-loader" id="num-of-stackers">0</h3>
@@ -655,7 +694,7 @@
             </div>
             <div
               class="project-item project-value-inner justify-content-between align-items-center wallet-connected-block"
-              style="display: none"
+              style="background-color: #610726;  display: none  "
             >
               <div class="project-value">
                 <h3
@@ -674,7 +713,7 @@
             </div>
             <div
               class="project-item project-value-inner justify-content-between align-items-center countdown-block"
-              style="display: none"
+              style="background-color: #610726;   "
             >
               <div class="project-value">
                 <h3
@@ -695,7 +734,7 @@
     <div
       class="staking4_table_sect pb-140"
       id="tx-history"
-      style="display: none"
+      style="background-color: #610726; display: none "
     >
       <div class="container">
         <div class="project_details2_allocations_table_sect m-0">
@@ -750,9 +789,9 @@
     <!-- Staking Raffles-->
     <div class="staking-information project-details-conent pb-80 md-pb-50">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-12 pr-25 md-pr-15">
-            <div class="project-item table-item">
+        <div class="row"  style="background-color: #920B3A;   ">
+          <div class="col-lg-12 pr-25 md-pr-15"  style="background-color: #920B3A;   ">
+            <div class="project-item table-item"  style="background-color: #920B3A;   " >
               <!-- <h4>
                 Additionally, we have raffle tickets for various staking
                 programs and the opportunity to win up to $2500 on SPN tokens on
@@ -796,7 +835,9 @@
                   <i style="font-size: 13px">*- Terms and conditions apply</i>
                 </p>
               </div> -->
-              <h5 style="font-size: 17px; font-family: 'Inter', sans-serif">
+              <h5 style="font-size: 17px; font-family: 'Inter', sans-serif"               style="background-color: #920B3A;   "
+              
+              >
                 If you have any queries or issues with staking program please
                 reach out to us at
                 <a href="mailto:info@sportzchain.com">info@sportzchain.com</a>
@@ -870,6 +911,26 @@
               </li>
             </ul>
           </div>
+          
+          <style >
+            .footer-icon-list i {
+              color: #FFFFFF;
+              background: url("../images/icons/icon-image.png");
+              width: 60px;
+              height: 60px;
+              line-height: 60px;
+              display: inline-block;
+              margin: 0 12px;
+              transition: transform 0.3s ease, color 0.3s ease;
+              font-size: 20px;
+            }
+          
+            .footer-icon-list i:hover {
+              color: #8B0000;
+              transform: scale(1.2);
+            }
+          </style>
+          
           <div class="footer-logo text-center mb-45">
             <a href="index.html">
               <img src="assets/images/logo/logo.svg" alt="Footer-logo" />
